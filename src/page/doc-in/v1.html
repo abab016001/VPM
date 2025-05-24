@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="main.js" defer></script>
+</head>
+<style>
+    :root {
+        --upload-primary: #69b076;
+        --upload-second: #e0eee3;
+        --upload-hover: #439953;
+        --upload-disable-bg: #f7f7f7;
+        --upload-disable-txt: #bcbcbc;
+        --li-primary: #4d4b4b;
+        --li-second: #9e9e9e;
+        --li-block: 50px;
+        --li-hover: #e1efe4;
+        --btn-radius: 25px;
+        --txt-radius: 5px;
+    }
+
+    .mx-1 {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .ms-1 {
+        margin-left: 5px;
+    }
+
+    .me-1 {
+        margin-right: 5px;
+    }
+
+    .me-2 {
+        margin-right: 10px;
+    }
+
+    .mb-1 {
+        margin-bottom: 5px;
+    }
+
+    .mt-1 {
+        margin-top: 5px;
+    }
+
+    .c-upload {
+        color: var(--upload-primary);
+    }
+
+    .c-li-primary {
+        color: var(--li-primary);
+    }
+
+    .c-li-second {
+        color: var(--li-second);
+    }
+
+    .drop-zone {
+
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-upload {
+
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url('../../../public/upload.png');
+        }
+
+        .txt-upload {
+            color: var(--upload-primary);
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .btn-upload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 150px;
+            height: 50px;
+            font-size: 1.1rem;
+            font-weight: bolder;
+            color: white;
+            background: var(--upload-primary);
+
+            border-radius: var(--btn-radius);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+
+            cursor: pointer;
+        }
+
+        .btn-upload:hover {
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+            background: var(--upload-hover);
+        }
+
+        .btn-upload2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 150px;
+            height: 50px;
+            font-size: 1.1rem;
+            font-weight: bolder;
+            color: var(--upload-primary);
+            background: white;
+
+            border: 2px solid var(--upload-primary);
+            border-radius: var(--btn-radius);
+
+            cursor: pointer;
+        }
+
+        .btn-upload2:hover {
+            color: var(--upload-hover);
+        }
+
+        .btn-upload3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 120px;
+            height: 30px;
+            font-size: 0.8rem;
+            font-weight: bolder;
+            color: white;
+            background: var(--upload-hover);
+
+            border: 2px solid var(--upload-primary);
+            border-radius: var(--btn-radius);
+
+            cursor: pointer;
+        }
+
+        .btn-disable {
+            background: var(--upload-disable-bg);
+            color: var(--upload-disable-txt);
+        }
+
+        .none-block {
+            width: inherit;
+            height: 100%;
+            background: var(--upload-second);
+            padding: 50px 0;
+            cursor: copy;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .files-block {
+            width: inherit;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .files-block-ul {
+            width: inherit;
+            max-height: calc(var(--li-block) * 6);
+            margin: 10px 0;
+            overflow-y: auto;
+        }
+
+        .files-block-li {
+            width: 100%;
+            padding: 10px;
+            border-bottom: 1px solid var(--li-primary);
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .file-block {
+                width: var(--li-block);
+                height: var(--li-block);
+            }
+
+            .file-block2 {
+                width: calc(var(--li-block) * 2);
+                height: var(--li-block);
+            }
+
+            .file-info {
+                width: calc(100% - (var(--li-block))*3);
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 5px 0;
+
+                b {
+                    padding: 0 10px;
+                    font-size: 0.7rem;
+                }
+            }
+
+            .file-x {
+                font-size: 2rem;
+            }
+
+            .file-kb {
+                font-size: 0.7rem;
+            }
+        }
+
+        .files-block-li:hover {
+            background: var(--li-hover);
+        }
+    }
+
+    .input-text {
+        width: 350px;
+        padding: 5px;
+        border: 1px solid var(--li-primary);
+        border-radius: var(--txt-radius);
+    }
+</style>
+
+<body>
+    <h1>文件進館</h1>
+    <div class="container">
+        <div id="drop-zone" class="drop-zone">
+
+            <div id="drop-zone-none" class="none-block" onclick="processAddFile();">
+
+                <i class="img-upload"></i>
+                <b class="txt-upload">點擊新增或拖曳檔案到此區塊</b>
+                <button class="btn-upload">新增檔案</button>
+
+                <input id="file-upload" type="file" style="display: none;" multiple>
+            </div>
+
+            <div id="drop-zone-files" class="files-block">
+                <b class="row-y-center">
+                    已新增檔案: <span id="drop-zone-files-count" class="c-upload mx-1"></span> 個 /
+                    總檔案大小：<span id="drop-zone-files-kb" class="c-upload mx-1"></span>
+                </b>
+                <ul id="drop-zone-files-ul" class="files-block-ul"></ul>
+                <div class="f-row f-aic f-sb mt-1">
+                    <button class="btn-upload2 me-1" onclick="processAddFile();">＋ 新增檔案</button>
+                    <div class="f-row f-aic">
+                        <label class="me-2">
+                            <b class="mb-1">進館備註(必填)</b> <br>
+                            <input type="text" class="input-text" id="txt-submit" onchange="processSummary();" placeholder="Summary (required)">
+                        </label>
+                        <button class="btn-upload3" id="btn-submit" onclick="processUpload();">確認上傳</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="drop-zone-fair" class="files-block">
+                <b style="color: red; font-size: 1.3rem;">進館失敗</b>
+                <b class="row-y-center">
+                    未註冊檔案: <span id="drop-zone-fair-count" class="c-upload mx-1"></span> 個 /
+                    總檔案大小：<span id="drop-zone-fair-kb" class="c-upload mx-1"></span>
+                </b>
+                <ul id="drop-zone-fair-ul" class="files-block-ul"></ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-none">
+        <div id="tmp-file-li">
+            <li class="files-block-li">
+                <img class="file-block" id="@file-img-id">
+                <div class="file-info">
+                    <b class="c-li-primary t-y-center">@file-name-txt</b>
+                    <b class="c-li-second  t-y-center">@file-type-txt</b>
+                </div>
+                <b class="file-block2 file-kb c-li-primary t-y-center" style="justify-content: end;">@file-kb-txt</b>
+                <b class="file-block file-x  t-center btn" data-name="@file-name-txt"
+                    onclick="processRemoveFile(this);">×</b>
+            </li>
+        </div>
+        <div id="tmp-fair-li">
+            <li class="files-block-li">
+                <img class="file-block" id="@fair-img-id">
+                <div class="file-info">
+                    <b class="c-li-primary t-y-center" style="font-size: 1.3rem; font-weight: bolder;">@fair-name-txt</b>
+                </div>
+            </li>
+        </div>
+    </div>
+</body>
+
+</html>
