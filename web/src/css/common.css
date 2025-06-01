@@ -1,3 +1,8 @@
+:root {
+    --icon-size: 25px;
+    --px: 5px;
+}
+
 * {
     box-sizing: border-box;
     outline: 1px solid pink;
@@ -8,17 +13,39 @@ html,body {
     height: 100%;
 }
 
+i,
 ul {
     border: none;
     color: inherit;
+    font-style: normal;
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-decoration: none;
 }
 
+.f-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.f-aic {
+    align-items: center;
+}
+
 .icon {
+    display: inline-block;
+    width: var(--icon-size);
+    height: var(--icon-size);
     background-position: center;
-    background-size: contain;
+    background-size: 75%;
     background-repeat: no-repeat;
+}
+
+.me-1 {
+    margin-right: calc(var(--px) * 1);
+}
+
+.me-2 {
+    margin-right: calc(var(--px) * 2);
 }

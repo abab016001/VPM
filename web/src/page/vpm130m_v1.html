@@ -7,12 +7,27 @@
     <link rel="stylesheet" href="../css/common.css">
 </head>
 <style>
+    :root {
+        --px: 5px;
+    }
+
     aside {
         width: 15%;
     }
 
     .img-folder {
-        background-image: url();
+        
+        background-image: url('../image/folder.png');
+    }
+
+    .aside-ul {
+
+    }
+
+    .aside-li {
+        display: flex;
+        align-items: center;
+        padding: 0 calc(var(--px) * 2);
     }
 </style>
 <body>
@@ -21,10 +36,10 @@
     </header>
     <main>
         <aside>
-            <ul>
-                <li class="icon">pdd</li>
-                <li class="icon">som</li>
-                <li class="icon">sum</li>
+            <ul class="aside-ul">
+                <li class="aside-li"><i class="icon img-folder me-1"></i><span>pdd</span></li>
+                <li class="aside-li"><i class="icon img-folder me-1"></i><span>som</span></li>
+                <li class="aside-li"><i class="icon img-folder me-1"></i><span>sum</span></li>
             </ul>
         </aside>
         <section>
