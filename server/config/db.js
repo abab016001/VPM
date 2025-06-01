@@ -11,10 +11,10 @@ const tables = [
 ];
 const createTables = db.transaction(() => {
     for (const table of tables) {
-        const stmt = db.prepare(table.ddl);
-        stmt.run();
+        db.exec(table.ddl);
     }
 });
+createTables();
 
 exports.insertAsync = async(sql, param) => {
     return new Promise((resolve, reject) => {
