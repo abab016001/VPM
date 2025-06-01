@@ -1,13 +1,12 @@
-const manager = require('../manager/VPM130M_Manager');
-
+const dao = require('../dao/VPM130M_Dao');
 exports.processMain = (res, req) => {
     return null;
 };
 
 exports.processQuery = (res, req) => {
-    manager.processQuery();
+
 }
 
 exports.processAddSave = (res, req) => {
-    manager.processAddSave();
+
 };

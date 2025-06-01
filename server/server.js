@@ -13,4 +13,6 @@ app.use(cors({
 const routes = require('./routes');
 app.use('/api', routes);
 
+db.init();
+
 app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
